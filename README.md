@@ -15,4 +15,4 @@ npm run dev
 ### Backend
 cd backend
 npm install
-node server.js
+node index.js or nodemon index.js
