@@ -1,10 +1,11 @@
 import React from 'react'
 import Header from '../components/common/Header'
+import PromptSection from '../components/common/PromptSection'
 import ImageBoard from '../components/common/ImageBoard'
 
 export default function Home() {
   return (
-    <div className='p-12 mx-auto lg:px-16 max-w-7xl'>
+    <div className='py-12 mx-auto lg:px-16 max-w-7xl'>
       <Header
         title="Welcome to DaVinci Studio "
         description="Create stunning visuals from text prompts" 
@@ -13,8 +14,8 @@ export default function Home() {
         <div className='col-span-2'>
           <ImageBoard />
         </div>
-        <div className='col-span-1'>
-
+        <div className='lg:col-span-1 '>
+          <PromptSection />
         </div>
       </div>
     </div>
