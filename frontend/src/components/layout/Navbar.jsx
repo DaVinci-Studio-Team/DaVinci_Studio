@@ -6,42 +6,95 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const user = true;
+
     return (
-        <nav className="sticky top-0 z-50 text-white bg-gray-900 border-gray-700 shadow-md rounded-b-2xl">
-            <div className="flex items-center justify-between px-2 py-3 mx-auto max-w-7xl">
+        <nav className="sticky top-0 z-50 border-b backdrop-blur-xl bg-black/30 border-white/10">
+            <div className="flex items-center justify-between px-[24px] py-[16px] lg:mx-[120px] mx-auto max-w-7xl">
 
                 {/* Logo */}
-                <div className="flex items-center gap-2">
-                    <Link to="/" className="flex items-center">
-                        <img src={Logo} alt="DaVinci Logo" className="inline-block w-10 h-10 mr-2" />
-                    </Link>
-                    <h1 className="m-0 text-2xl font-bold">DaVinci Studio</h1>
+                <Link to="/" className="flex items-center gap-2 group">
+                    <div className="relative">
+                        <div className="absolute inset-0 transition bg-purple-500 opacity-50 blur-xl group-hover:opacity-80"></div>
+
+                        <img src={Logo} alt="logo"
+                            className="relative z-10 rounded-full w-7 h-7"
+                        />
+                    </div>
+
+                    <span className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text">
+                        DaVinci Studio
+                    </span>
+                </Link>
+
+                {/* Desktop Menu */}
+                <div className="items-center hidden gap-8 text-white md:flex">
+                    {["Home", "History", "Explore", "Dashboard"].map((item) => (
+                        <Link
+                            key={item}
+                            className="relative text-sm transition hover:text-purple-400"
+                        >
+                            {item}
+                        </Link>
+                    ))}
                 </div>
 
-                {/* Desktop Menu list */}
-                <ul className="hidden gap-6 md:flex">
-                    <li className="cursor-pointer hover:text-gray-300">Home</li>
-                    <li className="cursor-pointer hover:text-gray-300">About</li>
-                    <li className="cursor-pointer hover:text-gray-300">Contact</li>
-                </ul>
+                {/* Auth Buttons */}
+                <div className="items-center hidden gap-3 font-semibold text-white md:flex">
+                    {user ? (
+                        <button className="px-[16px] h-8 text-sm transition rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/50">
+                            Logout
+                        </button>
+                    ) : (
+                        <>
+                            <button className="px-[16px] h-8 text-sm rounded-lg hover:bg-white/10">
+                                Login
+                            </button>
+                            <button className="px-[16px] h-8 text-sm rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                Sign Up
+                            </button>
+                        </>
+                    )}
+                </div>
 
-                {/* Hamburger Button */}
+                {/* Hamburger */}
                 <button
-                    className="md:hidden"
+                    className="text-white md:hidden"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {isOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
             </div>
 
-            {/* Mobile Menu list */}
-            {isOpen && (
-                <ul className="flex flex-col gap-4 px-4 pb-4 md:hidden">
-                    <li className="cursor-pointer hover:text-gray-300">Home</li>
-                    <li className="cursor-pointer hover:text-gray-300">About</li>
-                    <li className="cursor-pointer hover:text-gray-300">Contact</li>
-                </ul>
-            )}
+            {/* Mobile Menu */}
+            <div
+                className={`md:hidden transition-all duration-300 overflow-hidden ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+            >
+                <div className="flex flex-col gap-4 px-6 py-4 text-white bg-black/10">
+                    {["Home", "History", "Explore", "Dashboard"].map((item) => (
+                        <Link key={item} className="hover:text-purple-400">
+                            {item}
+                        </Link>
+                    ))}
+
+                    <hr className="border-white/10" />
+
+                    {user ? (
+                        <button className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                            Logout
+                        </button>
+                    ) : (
+                        <>
+                            <button>Login</button>
+                            <button className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                Sign Up
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
         </nav>
     );
 };
