@@ -57,6 +57,7 @@
 
 body {
   margin: 0;
+  background: radial-gradient(rgb(10 1 24), rgb(10 5 28), rgb(16 12 41));
 }
 
 #root {
@@ -73,4 +74,8 @@ body {
 
 p {
   margin: 0;
+}
+
+.text-transparent {
+  -webkit-text-fill-color: transparent;
 }
