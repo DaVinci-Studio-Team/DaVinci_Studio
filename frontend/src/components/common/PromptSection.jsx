@@ -4,7 +4,7 @@ import ChoiceChip from './ChoiceChip';
 
 const PromptSection = () => {
   return (
-    <div className='max-w-3xl mx-auto mb-12'>
+    <div className='max-w-3xl px-6 mx-auto mb-12'>
       <div className='p-8 border shadow-2xl rounded-2xl border-border backdrop-blur-xl'>
         <textarea
           name="prompt"
