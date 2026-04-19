@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Test Route
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.send('Welcome to DaVinci Studio Backend API!');
 });
 
 // Routes will be added here in the future.
