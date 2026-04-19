@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "../../assets/images/DaVinci_Logo.png";
 import { Link } from "react-router-dom";
+import { LuSparkles } from "react-icons/lu";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +16,8 @@ const Navbar = () => {
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2 group">
                     <div className="relative">
-                        <div className="absolute inset-0 transition bg-purple-500 opacity-50 blur-xl group-hover:opacity-80"></div>
-
-                        <img src={Logo} alt="logo"
-                            className="relative z-10 rounded-full w-7 h-7"
-                        />
+                        <div className="absolute inset-0 transition bg-purple-500 opacity-50 blur-xl group-hover:opacity-80 animate-pulse"></div>
+                        <LuSparkles className='relative z-10 text-purple-500 w-7 h-7' />
                     </div>
 
                     <span className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text">
@@ -68,9 +66,8 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden transition-all duration-300 overflow-hidden ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }`}
             >
                 <div className="flex flex-col gap-4 px-6 py-4 text-white bg-black/10">
                     {["Home", "History", "Explore", "Dashboard"].map((item) => (
