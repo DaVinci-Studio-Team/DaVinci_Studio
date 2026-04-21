@@ -5,11 +5,12 @@ import ChoiceChip from './ChoiceChip';
 const PromptSection = () => {
   return (
     <div className='max-w-3xl px-6 mx-auto mb-12'>
-      <div className='p-8 border shadow-2xl rounded-2xl border-border backdrop-blur-xl'>
+      <div className='relative p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20_80px_rgba(139,92,246,0.15)]'>
+        <div className='absolute inset-0 opacity-50 pointer-events-none rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-xl' />
         <textarea
           name="prompt"
           id="prompt"
-          className='w-full h-32 mb-6 bg-transparent resize-none focus:outline-none text-foreground placeholder-muted-foreground'
+          className='w-full h-32 mb-6 text-lg tracking-wide bg-transparent resize-nonetext-white/90 placeholder-white/40 focus:outline-none'
           placeholder='Describe the image you want to generate...'
         />
         <div className='flex flex-wrap gap-2 mb-6'>
