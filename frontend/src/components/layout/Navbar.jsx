@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "../../assets/images/DaVinci_Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuSparkles } from "react-icons/lu";
 
 const Navbar = () => {
+    const navigation = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
-    const user = true;
+    const user = false;
+
+    const hadleNav = () => {
+
+    }
 
     return (
         <nav className="sticky top-0 z-50 border-b backdrop-blur-xl bg-black/30 border-white/10">
@@ -20,7 +25,7 @@ const Navbar = () => {
                         <LuSparkles className='relative z-10 text-purple-500 w-7 h-7' />
                     </div>
 
-                    <span className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text">
+                    <span className="text-xl font-bold text-transparent engagement-font bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text">
                         DaVinci Studio
                     </span>
                 </Link>
@@ -40,15 +45,16 @@ const Navbar = () => {
                 {/* Auth Buttons */}
                 <div className="items-center hidden gap-3 font-semibold text-white md:flex">
                     {user ? (
-                        <button className="px-[16px] h-8 text-sm transition rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/50">
+                        <button onClick={() => navigation("/login")}
+                            className="px-[16px] h-8 text-sm transition rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/50">
                             Logout
                         </button>
                     ) : (
                         <>
-                            <button className="px-[16px] h-8 text-sm rounded-lg hover:bg-white/10">
+                            <button onClick={() => navigation("/login")} className="px-[16px] h-8 text-sm rounded-lg hover:bg-white/10">
                                 Login
                             </button>
-                            <button className="px-[16px] h-8 text-sm rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                            <button onClick={() => navigation("/register")} className="px-[16px] h-8 text-sm rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
                                 Sign Up
                             </button>
                         </>

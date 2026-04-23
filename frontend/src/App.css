@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Engagement&display=swap');
+
+.engagement-font {
+  font-family: "Engagement", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 .hover-effect:hover img {
     transform: scale(1.2);
     transition: transform 0.3s ease;
