@@ -3,12 +3,16 @@ import MainLayout from "../layouts/MainLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
+import TermsConditions from "../pages/TermsConditions";
 // import Login from "../pages/Login";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
+
+        <Route path="/terms-and-conditions" element={<TermsConditions />} />
+
         {/* Common routes */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
