@@ -10,6 +10,13 @@ const Navbar = () => {
 
     const user = false;
 
+    const links = [
+        { name: "Home", path: "/" },
+        { name: "History", path: "/history" },
+        { name: "Explore", path: "/explore" },
+        { name: "Dashboard", path: "/dashboard" },
+    ];
+
     const hadleNav = () => {
 
     }
@@ -32,13 +39,13 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="items-center hidden gap-8 text-white md:flex">
-                    {["Home", "History", "Explore", "Dashboard"].map((item) => (
+                    {links.map((link) => (
                         <Link
-                            key={item}
-                            to={`/${item.toLowerCase()}`}
+                            key={link.name}
+                            to={link.path}
                             className="relative text-sm transition hover:text-purple-400"
                         >
-                            {item}
+                            {link.name}
                         </Link>
                     ))}
                 </div>
@@ -77,9 +84,9 @@ const Navbar = () => {
                     }`}
             >
                 <div className="flex flex-col gap-4 px-6 py-4 text-white bg-black/10">
-                    {["Home", "History", "Explore", "Dashboard"].map((item) => (
-                        <Link to={`/${item.toLowerCase()}`} key={item} className="hover:text-purple-400" >
-                            {item}
+                    {links.map((link) => (
+                        <Link to={link.path} key={link.name} className="hover:text-purple-400" >
+                            {link.name}
                         </Link>
                     ))}
 
