@@ -82,7 +82,7 @@ const RegisterForm = () => {
           />
           <p className="text-xs text-gray-400">
             I agree to the{" "}
-            <Link to="/terms" className="text-purple-400 underline cursor-pointer">
+            <Link to="/terms-and-conditions" className="text-purple-400 underline cursor-pointer">
               Terms of Service
             </Link>{" "}
             and{" "}

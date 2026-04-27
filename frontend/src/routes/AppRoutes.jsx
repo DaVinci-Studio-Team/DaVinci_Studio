@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import TermsConditions from "../pages/TermsConditions";
 import Explore from "../pages/Explore";
 import Login from "../pages/Login";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 const AppRoutes = () => {
   return (
@@ -13,10 +14,13 @@ const AppRoutes = () => {
       <Routes>
 
         <Route path="/terms-and-conditions" element={<TermsConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
 
         {/* Common routes */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
         </Route>
 
@@ -30,4 +34,4 @@ const AppRoutes = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default AppRoutes;
