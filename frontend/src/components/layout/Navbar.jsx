@@ -35,6 +35,7 @@ const Navbar = () => {
                     {["Home", "History", "Explore", "Dashboard"].map((item) => (
                         <Link
                             key={item}
+                            to={`/${item.toLowerCase()}`}
                             className="relative text-sm transition hover:text-purple-400"
                         >
                             {item}
@@ -77,7 +78,7 @@ const Navbar = () => {
             >
                 <div className="flex flex-col gap-4 px-6 py-4 text-white bg-black/10">
                     {["Home", "History", "Explore", "Dashboard"].map((item) => (
-                        <Link key={item} className="hover:text-purple-400">
+                        <Link to={`/${item.toLowerCase()}`} key={item} className="hover:text-purple-400" >
                             {item}
                         </Link>
                     ))}

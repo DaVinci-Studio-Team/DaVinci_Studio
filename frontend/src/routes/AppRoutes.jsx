@@ -4,6 +4,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import TermsConditions from "../pages/TermsConditions";
+import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 
 const AppRoutes = () => {
@@ -16,6 +17,7 @@ const AppRoutes = () => {
         {/* Common routes */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
         </Route>
 
         {/* Auth routes */}
@@ -28,4 +30,4 @@ const AppRoutes = () => {
   );
 };
 
-export default AppRoutes;
+export default PrivacyPolicy;
