@@ -1,11 +1,9 @@
-import { apiInstance } from "../api/apiInstance";
+import {apiInstance}  from "../api/apiInstance";
 
-export const getPrompts = async () => {
-    try {
-        const response = await apiInstance.get('/prompts');
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching prompts:', error);
-        throw error;
-    }
+export const generateImageAPI = async (prompt) => {
+  const response = await apiInstance.post("/prompt/huggingface/generate-image", {
+    prompt,
+  });
+
+  return response.data;
 };
