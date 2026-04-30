@@ -13,9 +13,6 @@ export default function Home() {
       <div className='flex flex-col mt-16 md:px-8 lg:px-12 gap-14'>
         <PromptSection />
       </div>
-      <div>
-        <ImageBoard />
-      </div>
     </div>
   )
 }
