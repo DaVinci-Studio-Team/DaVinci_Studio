@@ -2,6 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const promptRoutes = require("./routes/prompt.routes");
+const userRoutes = require("./routes/auth.routes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // Routes will be added here in the future.
 app.use("/api/prompt", promptRoutes);
+app.use("/api/auth", userRoutes);
 
 // 404 Handler
 app.use((req, res) => {
