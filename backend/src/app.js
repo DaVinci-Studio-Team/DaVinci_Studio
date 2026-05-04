@@ -1,6 +1,7 @@
 // app.js - Main application file for the Express server
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser')
 const promptRoutes = require("./routes/prompt.routes");
 const userRoutes = require("./routes/auth.routes");
 
@@ -15,6 +16,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Test Route
 app.get("/", (req, res) => {
