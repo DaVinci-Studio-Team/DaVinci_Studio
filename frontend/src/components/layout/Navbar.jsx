@@ -3,12 +3,11 @@ import { Menu, X } from "lucide-react";
 import Logo from "../../assets/images/DaVinci_Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { LuSparkles } from "react-icons/lu";
+import { useAuth } from "../../hooks/useAuth";
 
 const Navbar = () => {
     const navigation = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
-
-    const user = false;
 
     const links = [
         { name: "Home", path: "/" },
@@ -20,6 +19,9 @@ const Navbar = () => {
     const hadleNav = () => {
 
     }
+
+    const { user, loading} = useAuth();
+    
 
     return (
         <nav className="sticky top-0 z-50 border-b backdrop-blur-xl bg-black/30 border-white/10">
