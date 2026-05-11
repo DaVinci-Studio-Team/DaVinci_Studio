@@ -8,6 +8,7 @@ const PromptSection = () => {
   const [prompt, setPrompt] = useState("");
   const [generatedImages, setGeneratedImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleGenerateImage = async () => {
     if (!prompt.trim()) return;
@@ -22,6 +23,7 @@ const PromptSection = () => {
       }
     } catch (error) {
       console.log("Image generation failed:", error);
+      setError("Failed to generate images. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -86,7 +88,7 @@ const PromptSection = () => {
       </div>
 
       {/* Generated Images */}
-      <ImageBoard images={generatedImages} />
+      <ImageBoard loading={loading} images={generatedImages} error={error} />
     </>
   );
 };
