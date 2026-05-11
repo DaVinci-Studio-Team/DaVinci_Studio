@@ -1,5 +1,5 @@
 const userModel = require("../models/user.model");
-const { hashPassword } = require("../utils/hashPassword");
+const { hashPassword, comparePassword } = require("../utils/hashPassword");
 
 const registerUserService = async (userData) => {
   const { name, email, password } = userData;
@@ -21,6 +21,23 @@ const registerUserService = async (userData) => {
   return newUser;
 };
 
+const loginUserService = async (email, password) => {
+  const user = await userModel.findOne({ email });
+
+  if (!user) {
+    throw new Error("Invalid email or password");
+  }
+
+  const isPasswordValid = await comparePassword(password, user.password);
+
+  if (!isPasswordValid) {
+    throw new Error("Invalid email or password");
+  } 
+
+  return user;
+};
+
 module.exports = {
   registerUserService,
+  loginUserService
 };

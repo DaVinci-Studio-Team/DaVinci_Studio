@@ -35,7 +35,6 @@ const RegisterForm = () => {
 
     try {
       const res = await registerUser(form)
-      console.log(res)
       navigate('/')
     } catch (err) {
       setError(err?.response?.data?.error)
