@@ -1,4 +1,7 @@
-const { registerUserService, loginUserService } = require("../services/auth.service");
+const {
+  registerUserService,
+  loginUserService,
+} = require("../services/auth.service");
 const { generateToken } = require("../utils/generateToken");
 
 const registerUser = async (req, res) => {
@@ -34,7 +37,6 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-
     const { email, password } = req.body;
     const user = await loginUserService(email, password);
 
@@ -65,6 +67,18 @@ const loginUser = async (req, res) => {
   }
 };
 
+const logoutUser = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+  });
+  res.status(200).json({
+    success: true,
+    message: "User logged out successfully",
+  });
+};
+
 const getUser = async (req, res) => {
   try {
     res.status(200).json({
@@ -79,5 +93,6 @@ const getUser = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
-  getUser
+  logoutUser,
+  getUser,
 };

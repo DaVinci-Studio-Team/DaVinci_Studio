@@ -4,6 +4,8 @@ import Logo from "../../assets/images/DaVinci_Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { LuSparkles } from "react-icons/lu";
 import { useAuth } from "../../hooks/useAuth";
+import LogoutBtn from "../button/LogoutBtn";
+import { logoutUser } from "../../services/auth.service";
 
 const Navbar = () => {
     const navigation = useNavigate();
@@ -16,11 +18,13 @@ const Navbar = () => {
         { name: "Dashboard", path: "/dashboard" },
     ];
 
-    const hadleNav = () => {
-
-    }
-
     const { user, loading} = useAuth();
+
+    const handleLogout = () => {
+        logoutUser();
+        navigation("/login");
+        console.log("object")
+    }
     
 
     return (
@@ -55,10 +59,7 @@ const Navbar = () => {
                 {/* Auth Buttons */}
                 <div className="items-center hidden gap-3 font-semibold text-white md:flex">
                     {user ? (
-                        <button onClick={() => navigation("/login")}
-                            className="px-[16px] h-8 text-sm transition rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/50">
-                            Logout
-                        </button>
+                        <LogoutBtn handleLogout={handleLogout} />
                     ) : (
                         <>
                             <button onClick={() => navigation("/login")} className="px-[16px] h-8 text-sm rounded-lg hover:bg-white/10">
@@ -94,17 +95,17 @@ const Navbar = () => {
 
                     <hr className="border-white/10" />
 
-                    {user ? (
-                        <button className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
-                            Logout
-                        </button>
+                    {user ? ( 
+                        <LogoutBtn handleLogout={handleLogout} />
                     ) : (
                         <>
-                            <button>Login</button>
-                            <button className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                            <button onClick={()=> navigation('/login')} className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                                Login
+                            </button>
+                            <button onClick={() => navigation("/register")} className="py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
                                 Sign Up
                             </button>
-                        </>
+                        </> 
                     )}
                 </div>
             </div>
