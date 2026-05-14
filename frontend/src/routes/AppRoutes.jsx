@@ -7,6 +7,7 @@ import TermsConditions from "../pages/TermsConditions";
 import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
+import History from "../pages/History";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/history" element={<History />} />
         </Route>
 
         {/* Auth routes */}
