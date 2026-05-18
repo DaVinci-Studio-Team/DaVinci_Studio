@@ -1,5 +1,10 @@
-const { generateImageFromPromptByReplicate } = require("../services/replicate.service");
-const { generateImageFromPromptByHuggingFace } = require("../services/huggingface.service.js");
+const {
+  generateImageFromPromptByReplicate,
+} = require("../services/replicate.service");
+const {
+  generateImageFromPromptByHuggingFace,
+} = require("../services/huggingface.service.js");
+const { uploadImageService } = require("../services/image.service");
 
 const generateImageByReplicate = async (req, res) => {
   try {
@@ -32,7 +37,7 @@ const generateImageByReplicate = async (req, res) => {
 
 const generateImageByHuggingFace = async (req, res) => {
   try {
-    const { prompt, numImages } = req.body;
+    const { prompt, style, numImages = 1 } = req.body;
 
     if (!prompt) {
       return res.status(400).json({
@@ -41,15 +46,29 @@ const generateImageByHuggingFace = async (req, res) => {
       });
     }
 
-    const image = await generateImageFromPromptByHuggingFace(prompt);
+    const images = await generateImageFromPromptByHuggingFace(
+      prompt,
+      numImages,
+    );
+
+    const savedImages = await Promise.all(
+      images.map(async (imageUrl) => {
+        return await uploadImageService({
+          imageUrl,
+          prompt,
+          style,
+          modelUsed: "HuggingFace Stable Diffusion 3 Medium",
+          user: req.user?._id,
+        });
+      }),
+    );
 
     return res.status(200).json({
       success: true,
-      image: [image],
+      images: savedImages,
     });
   } catch (error) {
     console.log("Controller Error:", error.message);
-
     return res.status(500).json({
       success: false,
       message: "Image generation failed",
