@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import AppRoutes from "./routes/AppRoutes";
+import "./App.css";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
   return (
-    <div className="App h-screen flex items-center justify-center">
-      <h1>Hello, World!</h1>
-    </div>
-  )
+    <>
+      <AppRoutes />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="dark"
+      />
+    </>
+  );
 }
 
-export default App
+export default App;
