@@ -1,9 +1,9 @@
 const express = require("express");
-const { generateImageByHuggingFace, generateImageByReplicate } = require("../controllers/prompt.controller");
+const { generateImageByHuggingFace } = require("../controllers/prompt.controller");
+const { optionalAuthMiddleware } = require("../middleware/auth.middleware");
 
 const router = express.Router();
 
-router.post("/huggingface/generate-image", generateImageByHuggingFace);
-router.post("/replicate/generate-image", generateImageByReplicate);
+router.post("/huggingface/generate-image", optionalAuthMiddleware, generateImageByHuggingFace);
 
 module.exports = router;

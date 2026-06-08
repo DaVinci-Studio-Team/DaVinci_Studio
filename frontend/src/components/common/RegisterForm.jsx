@@ -63,7 +63,6 @@ const RegisterForm = () => {
 
 
         <div className="space-y-6">
-          {/* Full Name */}
           <div>
             <label className="block pl-3 mb-2 text-xs font-semibold text-left text-gray-300">
               Full Name
@@ -78,7 +77,6 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          {/* Email */}
           <div>
             <label className="block pl-3 mb-2 text-xs font-semibold text-left text-gray-300">
               Email
@@ -93,7 +91,6 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          {/* Password */}
           <div>
             <label className="block pl-3 mb-2 text-xs font-semibold text-left text-gray-300">
               Password
@@ -114,7 +111,6 @@ const RegisterForm = () => {
 
         </div>
 
-        {/* Terms */}
         <div className="flex items-end mt-6 space-x-3">
           <input checked={check}
             onChange={() => setCheck(!check)}

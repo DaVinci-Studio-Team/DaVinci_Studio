@@ -16,9 +16,6 @@ const AppRoutes = () => {
 
         <Route path="/terms-and-conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
-
-        {/* Common routes */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -26,7 +23,6 @@ const AppRoutes = () => {
           <Route path="/history" element={<History />} />
         </Route>
 
-        {/* Auth routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

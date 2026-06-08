@@ -6,8 +6,6 @@ const Footer = () => {
     return (
         <footer className="mt-10 text-white bg-gray-900 border-t border-gray-700">
             <div className="grid grid-cols-1 gap-8 px-6 py-10 mx-auto max-w-7xl md:grid-cols-3 lg:grid-cols-5">
-
-                {/* Logo and Description */}
                 <div className="col-span-2">
                     <div className="flex items-center gap-2 mb-3">
                         <img src={Logo} alt="DaVinci Logo" className="w-10 h-10" />
@@ -18,7 +16,6 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* Quick Links */}
                 <div>
                     <h3 className="mb-3 text-lg font-semibold">Quick Links</h3>
                     <ul className="space-y-2 text-gray-400">
@@ -34,7 +31,6 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Social Media */}
                 <div className="flex flex-col items-center md:flex lg:flex">
                     <h3 className="mb-3 text-lg font-semibold">Connect with Us</h3>
                     <ul className="space-y-2 text-gray-400 text-start">
@@ -53,7 +49,6 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Contact Details */}
                 <div>
                     <h3 className="mb-3 text-lg font-semibold">Contact</h3>
                     <p className="text-sm text-gray-400">
@@ -65,7 +60,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Bottom */}
             <div className="py-4 text-sm text-center text-gray-500 border-t border-gray-700">
                 © {new Date().getFullYear()} DaVinci Studio. All rights reserved.
             </div>
