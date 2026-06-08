@@ -30,8 +30,6 @@ const Navbar = () => {
     return (
         <nav className="sticky top-0 z-50 border-b backdrop-blur-xl bg-black/30 border-white/10">
             <div className="flex items-center justify-between px-[24px] py-[16px] lg:mx-[120px] mx-auto max-w-7xl">
-
-                {/* Logo */}
                 <Link to="/" className="flex items-center gap-2 group">
                     <div className="relative">
                         <div className="absolute inset-0 transition bg-purple-500 opacity-50 blur-xl group-hover:opacity-80 animate-pulse"></div>
@@ -43,7 +41,6 @@ const Navbar = () => {
                     </span>
                 </Link>
 
-                {/* Desktop Menu */}
                 <div className="items-center hidden gap-8 text-white md:flex">
                     {links.map((link) => (
                         <Link
@@ -56,7 +53,6 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                {/* Auth Buttons */}
                 <div className="items-center hidden gap-3 font-semibold text-white md:flex">
                     {user ? (
                         <LogoutBtn handleLogout={handleLogout} />
@@ -72,7 +68,6 @@ const Navbar = () => {
                     )}
                 </div>
 
-                {/* Hamburger */}
                 <button
                     className="text-white md:hidden"
                     onClick={() => setIsOpen(!isOpen)}
@@ -81,7 +76,6 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             <div
                 className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                     }`}

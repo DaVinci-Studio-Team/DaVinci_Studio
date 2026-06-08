@@ -42,8 +42,6 @@ const TermsConditions = () => {
   return (
     <div className="min-h-screen bg-[#050816] text-white px-6 py-20 sm:px-10 lg:px-24">
       <div className="max-w-6xl mx-auto">
-
-        {/* Hero Section */}
         <div className="mb-16 text-center">
           <p className="inline-block px-4 py-2 mb-4 text-sm font-medium text-pink-300 border rounded-full border-pink-500/30 bg-pink-500/10">
             Legal Agreement
@@ -59,7 +57,6 @@ const TermsConditions = () => {
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid gap-8">
           {sections.map((item, index) => (
             <div

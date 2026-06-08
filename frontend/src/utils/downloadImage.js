@@ -1,5 +1,3 @@
-// Function to download an image
-
 export const downloadImage = async (imgUrl, index) => {
   try {
     const response = await fetch(imgUrl);

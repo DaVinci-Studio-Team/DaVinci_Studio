@@ -26,8 +26,8 @@ const generateImageFromPromptByHuggingFace = async (prompt, numImages = 4) => {
         return `data:image/png;base64,${Buffer.from(buffer).toString("base64")}`;
       })
     );
-
-    return base64Images; 
+    
+    return base64Images;
   } catch (error) {
     console.log("HF SDK Error:", error.message);
     throw error;

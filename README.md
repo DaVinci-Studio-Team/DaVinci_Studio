@@ -1,3 +1,4 @@
+```markdown
 # 🎨 DaVinci Studio
 
 A full-stack AI image generation platform that allows users to create, explore, and manage AI-generated images using Hugging Face and Replicate APIs.
@@ -34,7 +35,7 @@ A full-stack AI image generation platform that allows users to create, explore, 
 
 ### User Profile
 - 👤 User profile with avatar
-- 📈 Track generation history
+- 📀 Track generation history
 - 🎯 User role management (user/admin)
 - ✉️ Email-based registration and verification
 
@@ -202,24 +203,23 @@ Frontend runs on: `http://localhost:5174` (or available port)
 
 ---
 
-## 🔌 API Endpoints
+## 🌐 API Endpoints & Responses
 
 ### Authentication Routes (`/api/auth`)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/register` | Register new user |
-| POST | `/login` | User login |
-| GET | `/profile` | Get user profile (Protected) |
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/register` | ❌ | Register new user |
+| POST | `/login` | ❌ | User login |
+| GET | `/me` | ✅ | Get current user profile |
 
-### Prompt Routes (`/api/prompt`)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/generate` | Generate image using AI |
-| GET | `/list` | Get user's prompts (Protected) |
-| GET | `/:id` | Get specific prompt (Protected) |
-| PUT | `/like/:id` | Like an image (Protected) |
+### Image Routes (`/api/image`)
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/upload` | ✅ | Upload generated image |
+| GET | `/me` | ✅ | Get user's images |
+| GET | `/community` | ❌ | Get all community images |
 
-### Request/Response Examples
+### Response Examples
 
 **Register User**
 ```json
@@ -228,17 +228,6 @@ POST /api/auth/register
   "name": "John Doe",
   "email": "john@example.com",
   "password": "securePassword123"
-}
-
-Response:
-{
-  "success": true,
-  "message": "User registered successfully",
-  "user": {
-    "id": "user_id",
-    "name": "John Doe",
-    "email": "john@example.com"
-  }
 }
 ```
 
@@ -254,67 +243,258 @@ Response:
 {
   "success": true,
   "message": "Login successful",
-  "user": { ... }
+  "user": {
+    "id": "user_id",
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "token": "jwt_token_here"
+}
+```
+
+**Generate Image**
+```json
+POST /api/prompt/generate
+{
+  "prompt": "A futuristic city with neon lights",
+  "style": "Cyberpunk",
+  "numImages": 1
+}
+
+Response:
+{
+  "success": true,
+  "images": [
+    {
+      "id": "image_id",
+      "imageUrl": "base64_image_data",
+      "prompt": "A futuristic city with neon lights",
+      "style": "Cyberpunk",
+      "modelUsed": "HuggingFace Stable Diffusion 3 Medium",
+      "createdAt": "2026-06-08T10:30:00Z"
+    }
+  ]
+}
+```
+
+**Get User Images**
+```json
+GET /api/image/me
+
+Response:
+{
+  "success": true,
+  "images": [
+    {
+      "_id": "image_id",
+      "imageUrl": "url_to_image",
+      "prompt": "Image prompt",
+      "style": "Style",
+      "user": "user_id",
+      "createdAt": "2026-06-08T10:30:00Z"
+    }
+  ]
+}
+```
+
+**Get Community Images**
+```json
+GET /api/image/community
+
+Response:
+{
+  "success": true,
+  "images": [
+    {
+      "_id": "image_id",
+      "imageUrl": "url_to_image",
+      "prompt": "Image prompt",
+      "style": "Style",
+      "user": "user_id",
+      "createdAt": "2026-06-08T10:30:00Z"
+    },
+    ...
+  ]
 }
 ```
 
 ---
 
-## 🔑 Key Features Implemented
+## 🎯 Key Features Implemented
 
-### ✅ Completed
-- User authentication system (Register/Login)
-- JWT token generation and validation
-- Secure password hashing
-- MongoDB database integration
-- User model with profile fields
-- Express API structure
-- Frontend routing and pages
-- React form components with validation
-- Axios API client setup
+### ✅ Core Authentication
+- User registration with email validation
+- JWT-based login with secure tokens
+- Password hashing with bcryptjs
+- Token-based session management
+- Protected routes with auth middleware
 
-### 🔄 In Progress / TODO
-- [ ] Image generation endpoints
-- [ ] Image gallery/explore feature
-- [ ] Like/favorite functionality
+### ✅ Image Generation
+- AI image generation using Hugging Face API (Stable Diffusion 3 Medium)
+- Supports both authenticated users and guests
+- Guest users can generate 1 image before sign-up
+- Authenticated users get unlimited generations
+- Image prompts and metadata saved to database
+
+### ✅ Image Management
+- **Home Page:** Generate images with custom prompts
+- **History Page:** View all user-generated images
+  - Only accessible to logged-in users
+  - Shows loading states and error handling
+  - Display image prompts and generation dates
+  - Download individual images
+- **Explore/Community Gallery:** View all generated images from all users
+  - Public community image browsing
+  - Masonry grid layout
+  - Real-time data from database
+
+### ✅ User Experience
+- Guest generation tracking with localStorage
+- Login modal for unauthorized access attempts
+- Responsive design for mobile and desktop
+- Image download functionality
+- Prompt history and style tracking
+- Loading indicators for async operations
+- Error handling and user feedback
+
+### ✅ Backend API
+- `/auth/register` - User registration
+- `/auth/login` - User authentication
+- `/auth/me` - Get current user profile
+- `/image/upload` - Upload/save generated images
+- `/image/me` - Get user's images (protected)
+- `/image/community` - Get all community images
+
+### 🔄 TODO / Optional Features
+- [ ] Image upscaling with Real-ESRGAN
 - [ ] Email verification
 - [ ] Password reset feature
-- [ ] User dashboard
+- [ ] Like/favorite functionality
+- [ ] User dashboard with stats
 - [ ] Admin panel
-- [ ] Search and filter functionality
-- [ ] Rate limiting
-- [ ] Error handling improvements
+- [ ] Advanced image filtering and search
+- [ ] Rate limiting per user
+- [ ] Image sharing and social features
+- [ ] Comments and ratings on images
+
+---
+
+## 📱 Application Pages & Usage
+
+### Public Pages (No Login Required)
+1. **Home Page** (`/`)
+   - Generate AI images as a guest (1 free generation)
+   - Choose from style presets (Cyberpunk, Realistic, Abstract, Anime, Fantasy, Sci-fi)
+   - See generated images instantly
+   - Download generated images
+
+2. **Explore/Community** (`/explore`)
+   - Browse all generated images from the community
+   - View image prompts and generation dates
+   - Masonry grid layout
+   - No authentication required
+
+3. **Login** (`/login`)
+   - Sign in with email and password
+   - Link to registration
+
+4. **Register** (`/register`)
+   - Create new account with name, email, password
+   - Link to login
+
+5. **Privacy Policy** (`/privacy-policy`)
+   - Legal information about data usage
+
+6. **Terms & Conditions** (`/terms-and-conditions`)
+   - Platform usage terms
+
+### Protected Pages (Login Required)
+1. **History** (`/history`)
+   - View all your generated images
+   - See image prompts and creation dates
+   - Download individual images
+   - Shows login modal if not authenticated
+
+2. **Dashboard** (`/dashboard`)
+   - User profile and settings
+   - Statistics and usage info
+
+### Workflow
+
+**For Guest Users:**
+1. Visit Home page
+2. Enter image prompt and select style
+3. Generate image (1 free generation)
+4. See login modal to continue
+5. Browse community images
+
+**For Registered Users:**
+1. Register an account
+2. Login with credentials
+3. Generate unlimited images
+4. View history of all generated images
+5. Browse and explore community images
+6. Download and share creations
+
+---
+
+## 📞 Support & Contact
+
+For issues, questions, or suggestions:
+- Create an issue in the repository
+- Check existing issues for solutions
+- Provide detailed error messages and steps to reproduce
 
 ---
 
 ## 🤝 Contributing
 
-1. Create a feature branch: `git checkout -b feature/your-feature-name`
-2. Make your changes
-3. Commit: `git commit -m 'Add your feature'`
-4. Push: `git push origin feature/your-feature-name`
-5. Submit a Pull Request
+We welcome contributions! Here's how:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Commit: `git commit -m 'Add amazing feature'`
+5. Push: `git push origin feature/amazing-feature`
+6. Submit a Pull Request
+
+### Contribution Guidelines
+- Write clean, readable code
+- Follow existing code style
+- Test your changes before submitting
+- Update README if adding new features
+- Remove all console.logs before committing
 
 ---
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License.
-
----
-
-## 💡 Tips
-
-- Always run both frontend and backend servers during development
-- Check the browser console (F12) for frontend errors
-- Check terminal output for backend errors
-- Use MongoDB Atlas dashboard to verify database changes
-- Test API endpoints using Postman or similar tools
+This project is licensed under the MIT License - see LICENSE file for details.
 
 ---
 
-## 📞 Support
+## 👨‍💻 Project Info
 
-For issues or questions, please create an issue in the repository.
+**Project Name:** DaVinci Studio  
+**Type:** Full-Stack Web Application  
+**Duration:** 8 Weeks (Internship Project)  
+**Status:** Active Development  
+**Role:** Full Stack Developer  
+**Developer:** Sanath Rai  
+**Email:** sanathrai03@gmail.com  
+**GitHub:** https://github.com/SanathRai33  
 
-**Happy Coding! 🚀**
+### Tech Stack Summary
+- **Frontend:** React 18 + Vite + Tailwind CSS
+- **Backend:** Node.js + Express.js
+- **Database:** MongoDB + Mongoose
+- **AI APIs:** Hugging Face + Replicate
+- **Authentication:** JWT
+- **Deployment Ready:** ✅
+
+### File Statistics
+- **Backend:** 5 services, 3 controllers, 3 routes, 2 models, 1 middleware
+- **Frontend:** 15+ components, 8 pages, 3 services, 2 hooks, 2 utilities
+- **Total Lines of Code:** 3,000+
+
+**Happy Creating with DaVinci Studio! 🎨✨**

@@ -61,8 +61,6 @@ const LoginForm = () => {
         </div>
 
         <div className="space-y-6">
-
-          {/* Email */}
           <div>
             <label className="block pl-3 mb-2 text-xs font-semibold text-left text-gray-300">
               Email
@@ -82,7 +80,6 @@ const LoginForm = () => {
             </div>
           </div>
 
-          {/* Password */}
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="block pl-3 text-xs font-semibold text-left text-gray-300">
@@ -112,7 +109,6 @@ const LoginForm = () => {
           </div>
         </div>
 
-        {/* Remember Me */}
         <div className="flex items-center mt-6 space-x-3">
           <input
             type="checkbox"

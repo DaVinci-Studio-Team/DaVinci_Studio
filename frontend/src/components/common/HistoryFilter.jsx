@@ -4,8 +4,6 @@ import { Search, SlidersHorizontal, CalendarDays } from "lucide-react";
 const HistoryFilter = () => {
     return (
         <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-center max-h-[50px]">
-
-            {/* Search Box */}
             <div className="relative flex-1">
                 <Search size={20} className="absolute text-gray-400 -translate-y-1/2 left-5 top-1/2" />
                 <input type="text" placeholder="Search by prompt..."
@@ -15,7 +13,6 @@ const HistoryFilter = () => {
                 />
             </div>
 
-            {/* Buttons */}
             <div className="flex gap-4">
 
                 <button
