@@ -10,7 +10,6 @@ export const useMyImages = () => {
     setLoading(true);
     try {
       const res = await apiInstance.get("/image/me");
-      console.log("Images", res?.data?.images)
       setImages(res?.data?.images || res?.data || []);
       setError(null);
     } catch (err) {

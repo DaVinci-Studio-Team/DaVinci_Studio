@@ -27,10 +27,9 @@ const imageSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    visibility: {
-        type: String,
-        enum: ['public', 'private'],
-        default: 'private',
+    isPrivate: {
+        type: Boolean,
+        default: true
     },
     isFavorite: {
         type: Boolean,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../components/layout/Header'
 import HistoryFilter from '../components/common/HistoryFilter'
 import HistoryCard from '../components/common/HistoryCard'
@@ -8,12 +8,16 @@ import { useMyImages } from '../hooks/useMyImages '
 
 const History = () => {
     const { user, loading: authLoading } = useAuth()
-    const { images, loading: imagesLoading, error } = useMyImages()
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const { images: fetchedImages, loading: imagesLoading, error } = useMyImages();
 
-    console.log(images)
+    const [images, setImages] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
+        setImages(fetchedImages);
+    }, [fetchedImages]);
+
+    useEffect(() => {
         if (!authLoading && !user) {
             setIsLoginModalOpen(true)
         }
@@ -60,7 +64,7 @@ const History = () => {
                 ) : images.length > 0 ? (
                     <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
                         {images.map((image) => (
-                            <HistoryCard key={image._id} image={image} />
+                            <HistoryCard key={image._id} image={image} setImages={setImages} />
                         ))}
                     </div>
                 ) : (

@@ -418,10 +418,10 @@ Or keep it for reference - decision depends on UX goals.
 
 ```javascript
 // In browser console:
-localStorage.getItem("guest_generated_image")      // See image URL
-localStorage.getItem("guest_image_timestamp")      // See when saved
-Object.keys(localStorage)                           // All keys
-localStorage.clear()                                // Clear all
+localStorage.getItem("guest_generated_image")      
+localStorage.getItem("guest_image_timestamp")      
+Object.keys(localStorage)                           
+localStorage.clear()                             
 ```
 
 ---
