@@ -1,9 +1,13 @@
-const imageModel = require("../models/image.model");
+import { apiInstance } from "../api/apiInstance";
 
-const uploadImageService = async (imageData) => {
-  return await imageModel.create(imageData);
+export const toggleVisibility = async (imageId) => {
+  const response = await apiInstance.patch(`/image/${imageId}/visibility`);
+
+  return response.data;
 };
 
-module.exports = {
-  uploadImageService,
+export const deleteImage = async (imageId) => {
+  const response = await apiInstance.delete(`/image/${imageId}`);
+
+  return response.data;
 };
