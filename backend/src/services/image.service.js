@@ -11,8 +11,8 @@ const getUserImagesService = async (userId) => {
   return images;
 };
 
-const getAllImages = async () => {
-  const images = await imageModel.find();
+const getPublicImages = async () => {
+  const images = await imageModel.find({ isPrivate: false });
 
   return images;
 };
@@ -20,5 +20,5 @@ const getAllImages = async () => {
 module.exports = {
   uploadImageService,
   getUserImagesService,
-  getAllImages
+  getPublicImages,
 };

@@ -1,7 +1,7 @@
 const {
   uploadImageService,
   getUserImagesService,
-  getAllImages,
+  getPublicImages,
 } = require("../services/image.service");
 const imageModel = require("../models/image.model");
 
@@ -106,7 +106,7 @@ const deleteImageByUserId = async (req, res) => {
 
 const getImageByCommunity = async (req, res) => {
   try {
-    const images = await getAllImages();
+    const images = await getPublicImages();
 
     res.status(200).json({
       success: true,
