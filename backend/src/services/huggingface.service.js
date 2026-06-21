@@ -29,10 +29,10 @@ const generateImageFromPromptByHuggingFace = async (prompt, numImages = 4) => {
     
     // return base64Images;
 
-    return ['https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=',
-      'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=600&quality=80',
-      'https://img.magnific.com/premium-photo/natural-travel-destination-beautiful-mountain-nature-amazing-sky-scenery_1105964-1249.jpg?semt=ais_hybrid&w=740&q=80',
-      'https://images.unsplash.com/photo-1620053580376-3de604e91953?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwbmF0dXJlfGVufDB8fDB8fHww'
+    return ['https://images.stockcake.com/public/2/3/7/23754627-0a14-4855-971d-49de7b8aecfc_medium/intense-anime-portrait-stockcake.jpg',
+      'https://m.media-amazon.com/images/I/711QKwip-kL._AC_UF894,1000_QL80_.jpg',
+      'https://m.media-amazon.com/images/I/6154Bwvu4vL._AC_UF894,1000_QL80_.jpg',
+      'https://play-lh.googleusercontent.com/UV4ptzFCTi4sprj3kA1FXpQuGMjl7oFhWHUOqPH5cNgwcmiatn3KNfZ7DTInLZbPzvdR6AElXJj2Encuwmga'
     ]
 
 
